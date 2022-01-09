@@ -1,42 +1,129 @@
-# Hello Node!
+Bot Altyapı Projesine Hoşgeldin!
+=================
+Merhaba Arkadaşlar Bu Altyapı 2018 Yılında Yapılmış 2021 Yılında İse Gerekli Düzeltmeleri Yapılmıştır. Bu Altyapı Discord.js v12 Sürümünü Artık Desteklemektedir! Kolaylıkla Kullanabilirsiniz!
 
-This project includes a Node.js server script and a web page that connects to it. The front-end page presents a form the visitor can use to submit a color name, sending the submitted value to the back-end API running on the server. The server returns info to the page that allows it to update the display with the chosen color. 🎨
+[Resmi Discord Sunucumuz](https://discord.gg/Zwr4MqyKrC)
 
-[Node.js](https://nodejs.org/en/about/) is a popular runtime that lets you run server-side JavaScript. This project uses the [Fastify](https://www.fastify.io/) framework and explores basic templating with [Handlebars](https://handlebarsjs.com/).
+[Resmi Youtube Kanalımız](https://www.youtube.com/channel/UCVRhrcoG6FOvHGKehYtvKHg?view_as=subscriber)
 
-## Prerequisites
+[Resmi İnstagram Hesabımız](https://www.instagram.com/emirhansarac06/)
 
-You'll get best use out of this project if you're familiar with basic JavaScript. If you've written JavaScript for client-side web pages this is a little different because it uses server-side JS, but the syntax is the same!
+Diğer Altyapılar!
+=================
+[Ayarlanabilen Emoji ile Rol Verme Altyapısı](https://www.youtube.com/watch?v=c715ki9tV8g)
 
-## What's in this project?
+[Kayıt Botu Altyapısı](https://www.youtube.com/watch?v=0ciAxO0k35g)
 
-← `README.md`: That’s this file, where you can tell people what your cool website does and how you built it.
+[Müzik Botu Altyapısı](https://youtu.be/tJIDkr2gtpQ)
 
-← `public/style.css`: The styling rules for the pages in your site.
+[Davet Botu Altyapısı](https://www.youtube.com/watch?v=FsYR6egP0PU)
 
-← `server.js`: The **Node.js** server script for your new site. The JavaScript defines the endpoints in the site back-end, one to return the homepage and one to update with the submitted color. Each one sends data to a Handlebars template which builds these parameter values into the web page the visitor sees.
+[Captcha Botu Altyapısı](https://youtu.be/3UQMNEuLY64)
 
-← `package.json`: The NPM packages for your project's dependencies.
+[Slash Bot Altyapısı](https://youtu.be/ZKjBYsFnYls)
 
-← `src/`: This folder holds the site template along with some basic data files.
+[Yönetim Panelli Bot Altyapısı](https://github.com/EmirhanSarac/discord-bot-dashboard)
 
-← `src/pages/index.hbs`: This is the main page template for your site. The template receives parameters from the server script, which it includes in the page HTML. The page sends the user submitted color value in the body of a request, or as a query parameter to choose a random color.
+Basit Hatalar ve Çözümleri!
+=================
+1 • Eğer hatanız;
+`Cannot find module 'blabla'`
+şeklindeyse modül kurmanız gerekmektedir.
+Modül kurmak için konsolu açıp `npm i blabla` yazınız.
+Glitch kullanıyorsanız basit kurulum yolu;
+1 • Package.json'a girin.
+2 • Yukarıdan Add Package basın.
+3 • İnmesi gereken paket ismini yazın ve çıkana basın.
+başarılı! 
 
-← `src/colors.json`: A collection of CSS color names. We use this in the server script to pick a random color, and to match searches against color names.
+2 • Eğer hatanız;
+`ayarlar is not defined:`
+şeklindeyse hatayı aldığınız komutun en üstüne alttaki kodu girmeniz gerekli:
+`const ayarlar = require('../ayarlar.json')`
+ yazın, sorun çözülecektir.
+ 
 
-← `src/seo.json`: When you're ready to share your new site or add a custom domain, change SEO/meta settings in here.
+ 3 • Eğer hatanız;
+`SyntaxError: Unexpected token };`
+Tarzında bir hata alıyorsanız, açıp kapatmadığınız veya kapatıp açmadığın bir paranteziniz vardır demek. Çözmek için hata oluşmadan önce en son eklediğiniz komuta bi' göz gezdirmek. Sorunu bulduğunuz zaman parantezleri düzelttiğinizde sorunda ortadan kalkar.
+ 
+4 • Eğer hatanız; 
+`(node:6660) UnhandlePromiseRejectionWarning: Error: Incorrect login details were provided.`
+Tarzında ki bir token hatasında yapmanız gereken tek şey, https://discord.com/developers/applications sayfasına girip botunuza giriş yapmak, tokeninizi oradan kopyalayıp projenizde ki token gerektiren yere doğru bir şekilde "" içinde yapıştırın.
+ 
+5 • Eğer hatanız; 
+`fields.flat is not a function`
+İse Node versiyonunuzu 12x yapın.
+ 
+6 • Eğer Hatanız;
+`(node:223) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'id' of null`
+Şeklindeyse `if (!message.guild) return;` Komutun Başına Yazarak Çözebilirsiniz
 
-## Try this next 🏗️
+7 • Eğer Hatanız;
+`TypeError: Cannot read property 'send' of undefined`
+Şeklindeyse Bot mesajı atacak bir kanalı bulamayınca yukarıda ki hatayı verir. Log kısmına bakıp hangi komutta hangi kanalın ayarlı olmadığını kontrol edin.
 
-Take a look in `TODO.md` for next steps you can try out in your new site!
+8 • Eğer Hatanız;
+`maxListeners`
+ Hatanız da yukarıda ki gibi maxListeners geçiyor ise main dosyanızın bir bölümüne `client.setMaxListeners(30)` yazın. Sorun çözülecektir, çözülmez ise fazla client.on eventlerini silin.
+ 
+9 • Eğer Hatanız;
+`DeprecationWarning:TextChannel#sendEmbed: use TextChannel#send instead`
+Bu uyarıyı verdiği zaman `<channel>.sendEmbed` eventini `<channel>.send` yapmanız gerekir
 
-___Want a minimal version of this project to build your own Node.js app? Check out [Blank Node](https://glitch.com/edit/#!/remix/glitch-blank-node)!___
+10 • Eğer Böyle Bir Yazı Alıyorsanız;
+`DeprecationWarning: Collection#find: pass a function instead`
+Bu bir hata değil uyarıdır yapmanız gereken;
+`<collection>.find('name', 'isim')`
+Kodlarını
+`<collection>.find(x => x.name == 'name')`
+Şeklinde kullanırsanız sorun düzelecektir (Örnektir.)
 
-![Glitch](https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2FLogo_Color.svg?v=1602781328576)
+ 11 • Eğer Hatanız;
+`UnhandledPromiseRejectionWarning: DiscordAPIError: Missing Permissions`
+Bu şekilde bir hata alıyorsanız bota uygulatmaya çalıştırdığınız işleme botun yetkisi yetmiyordur vereceğim kodu main dosyanıza atarak sorunu çözebilirsiniz.
+ 
+ 12 • Eğer Hatanız;
+`Something took to long to do` 
+Bu hatanın nedeni: Bir gün içerisinde 1000 defa botunuz tokene bağlantı kurduğu halinde veya Glitch, Heroku vb. sitelerde kullanıyorsanız bazenleri bu sitelerde 'tokeni kötüye kullanan' IP Ban yiyor ve çoğu proje remixleseniz dahi token ban yiyor. 
+Çözümü: 1-2 gün civarı bu böyle devam edebilir. İP Ban yemiş projeyi bulmanız gerek bu projeyi bulduğunuzda remixleyin hatanız düzelir.
+ 
 
-## You built this with Glitch!
+`İyi Kullanımlar!`
 
-[Glitch](https://glitch.com) is a friendly community where millions of people come together to build web apps and websites.
+Etiketler: discord bot altyapı glitch
+discord bot altyapı github
+discord bot altyapı 2020
+discord bot altyapı v12
+discord bot altyapısı glitch
+discord bot altyapı 2021
+discord bot altyapı visual studio code
+discord bot altyapı nasıl yapılır
+discord altyapı
+discord ban bot altyapı
+bot altyapı
+discord destek bot altyapı
+discord bot altyapısı github
+discord eğlence bot altyapı
+discord müzik bot altyapı glitch
+discord guard bot altyapı
+discord gif bot altyapı
+discord groovy bot altyapı
+discord nitro generator bot altyapı
+discord bot hazır altyapı
+discord bot hazır altyapı glitch
+discord bot yapma hazır altyapı
+discord bot altyapı indir
+discord invite bot altyapı
+discord.js bot altyapı
+discord kayıt bot altyapı
+discord bot list altyapı
+discord müzik bot altyapı
+discord moderasyon bot altyapı
+discord public bot altyapı
+discord register bot altyapı
+discord stat bot altyapı
+emirhan saraç discord bot altyapı
+discord hazır bot komutları
+discord uptime bot altyapı
 
-- Need more help? [Check out our Help Center](https://help.glitch.com/) for answers to any common questions.
-- Ready to make it official? [Become a paid Glitch member](https://glitch.com/pricing) to boost your app with private sharing, more storage and memory, domains and more.

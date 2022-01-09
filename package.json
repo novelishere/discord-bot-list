@@ -1,23 +1,26 @@
 {
-  "name": "hello-node",
+  "//1": "Discord bot altyapı!",
+  "//2": "https://docs.npmjs.com/files/package.json",
+  "//3": "Discord hazır altyapı",
+  "name": "hello-express",
   "version": "0.0.1",
-  "description": "A simple Node app built on fastify, instantly up and running.",
-  "main": "server.js",
+  "description": "Glitch Discord Botu.",
+  "main": "bot.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node bot.js"
   },
   "dependencies": {
-    "fastify": "^3.25.3",
-    "fastify-formbody": "^5.2.0",
-    "fastify-static": "^4.5.0",
-    "handlebars": "^4.7.7",
-    "point-of-view": "^5.0.0"
+    "discord.js": "^13.5.1",
+    "figlet": "^1.5.0",
+    "moment": "^2.29.1",
+    "moment-duration-format": "^2.3.2",
+    "ms": "^2.1.3"
   },
   "engines": {
-    "node": "12.x"
+    "node": "16.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/glitch-hello-node"
+    "url": "https://glitch.com/edit/#!/hello-express"
   },
   "license": "MIT",
   "keywords": [
