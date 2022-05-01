@@ -18,10 +18,27 @@ exports.run = async(client, message, args) => {
   if(bot.status === 'bekliyor') return msg.send(`> Üzgünüm <@${message.author.id}>, bu bot zaten başvurmuş, lütfen onaylanmasını bekleyin.`)
   if(bot.status === 'onaylandı') return msg.send(`> Üzgünüm <@${message.author.id}>, bu bot zaten sistemimizde bulunuyor.`)
   
+  const buttons = new MessageActionRow()
+  .addComponents(
+    
+    new MessageButton()
+		.setURL(`https://discord.com/oauth2/authorize?client_id=${id}&guild_id=${message.guild.id}&scope=bot&permissions=0`)
+		.setLabel('0 Perm Davet')
+		.setStyle('LINK'),
+
+		new MessageButton()
+		.setURL(`https://discord.com/oauth2/authorize?client_id=${id}&guild_id=${message.guild.id}&scope=bot&permissions=8`)
+		.setLabel('8 Perm Davet')
+		.setStyle('LINK'),
+
+)
+  
   const embed = new MessageEmbed()
   .setColor("BLUE")
   .setAuthor({name: message.author.tag, iconURL: message.author.displayAvatarURL({dynamic: true})})
-  .addField(``,
+  .addField(`Ekleyen`,`<@${message.author.id}>`)
+  .addField(`Bot`,`<@${id}>`)
+  .setFooter({text: message.guild.name, iconURL: message.guild.iconURL({dynamic: true})})
   
   msg.send(`> Hey <@${message.author.id}>, başvurunuz yetkililerle iletilmiştir. Lütfen onaylanmasını bekleyiniz.`)
   modlog.send(`<@${message.author.id}>, <@${id}> botunu sisteme ekledi.`)
