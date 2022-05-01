@@ -17,8 +17,8 @@ exports.run = async(client, message, args) => {
   if(id.length !== 18) return msg.send(`> Üzgünüm <@${message.author.id}>, **discord idleri 18 uzunluktan oluşuyor.**`)
   
   if(bot) {
-  if(bot.status === 'bekliyor') return msg.send(`> Üzgünüm <@${message.author.id}>, bu bot zaten başvurmuş, lütfen onaylanmasını bekleyin.`)
-  if(bot.status === 'onaylandı') return msg.send(`> Üzgünüm <@${message.author.id}>, bu bot zaten sistemimizde bulunuyor.`)
+  if(bot.status === 'bekliyor') return msg.send(`> Üzgünüm <@${message.author.id}>,** bu bot zaten başvurmuş, lütfen onaylanmasını bekleyin.**`)
+  if(bot.status === 'onaylandı') return msg.send(`> Üzgünüm <@${message.author.id}>, **bu bot zaten sistemimizde bulunuyor.**`)
   } else {
   
   const buttons = new MessageActionRow()
@@ -26,13 +26,12 @@ exports.run = async(client, message, args) => {
     
     new MessageButton()
 		.setURL(`https://discord.com/oauth2/authorize?client_id=${id}&guild_id=${message.guild.id}&scope=bot&permissions=0`)
-		.setLabel('Davet')
+		.setLabel('Davet 0 Perm')
 		.setStyle('LINK'),
 
 		new MessageButton()
 		.setURL(`https://discord.com/oauth2/authorize?client_id=${id}&guild_id=${message.guild.id}&scope=bot&permissions=8`)
-		.setLabel('Davet')
-    .setEmoji(':eight: ')
+		.setLabel('Davet 8 Perm')
 		.setStyle('LINK'),
 
 )
@@ -42,11 +41,15 @@ exports.run = async(client, message, args) => {
   .setAuthor({name: message.author.tag, iconURL: message.author.displayAvatarURL({dynamic: true})})
   .addField(`Ekleyen`,`<@${message.author.id}>`)
   .addField(`Bot`,`<@${id}>`)
+  .addField(`Mesaja Git`,`[Link](https://discord.com/channels/${message.guild.id}/${msg.id}/${message.id})`)
   .setFooter({text: message.guild.name, iconURL: message.guild.iconURL({dynamic: true})})
   
-  msg.send(`> Hey <@${message.author.id}>, başvurunuz yetkililerle iletilmiştir. Lütfen onaylanmasını bekleyiniz.`)
+  msg.send(`> Hey <@${message.author.id}>, **başvurunuz yetkililerle iletilmiştir. Lütfen onaylanmasını bekleyiniz.**`)
   modlog.send(`<@${message.author.id}>, <@${id}> botunu sisteme ekledi.`)
   onayredlog.send({embeds: [embed], components: [buttons]})
+    
+   db.set(`bot_${id}`, {status: 'bekliyor'}) 
+    
 }
 }
 exports.conf = {
