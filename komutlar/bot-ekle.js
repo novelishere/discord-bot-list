@@ -3,9 +3,12 @@ const db = require('quick.db')
 
 exports.run = async(client, message, args) => {
  
+  let msg = message.channel
+  
+ if(message.channel.id !== process.env.CHANNEL) return msg.send(`Üzgünüm <@${message.author.id}>, **Bu kanal bot-ekle kanalı olarak ayarlanmamış, lütfen <#${process.env.CHANNEL}> kanalında kullanmaya çalışın.**`)
+  
   let id = args[0]
   
-  let msg = message.channel
   let modlog = client.channels.cache.get(process.env.MOD_LOG)
   let onayredlog = client.channels.cache.get(process.env.ONAY_RED_LOG)
   
@@ -48,7 +51,7 @@ exports.run = async(client, message, args) => {
   modlog.send(`<@${message.author.id}>, <@${id}> botunu sisteme ekledi.`)
   onayredlog.send({embeds: [embed], components: [buttons]})
     
-   db.set(`bot_${id}`, {status: 'bekliyor'}) 
+   db.set(`bot_${id}`, {status: 'bekliyor', userId: message.author.id}) 
     
 }
 }
