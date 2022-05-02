@@ -5,7 +5,7 @@ exports.run = async(client, message, args) => {
   
   let msg = message.channel
   let list = db.fetch(`botlist_${message.guild.id}`) || 0
-  let liste = Array.isArray(list)
+  
   
   let perm = process.env.PERM_ROLE_ID
   if(!message.member.roles.cache.has(perm)) return msg.send(`> Üzgünüm <@${message.author.id}, **bu komut yanlız yöneticiler olarak ayarlı**`)
@@ -13,7 +13,7 @@ exports.run = async(client, message, args) => {
   const embed = new MessageEmbed()
   .setTitle("Onaylanmayı Bekleyen Botlar...")
   .setColor("BLUE")
-  .setDescription(`>> ${liste}`)
+  .setDescription(`>> ${list}`)
   
   msg.send({embeds: [embed]})
   
