@@ -56,7 +56,8 @@ exports.run = async(client, message, args) => {
   modlog.send(`<@${message.author.id}>, <@${id}> botunu sisteme ekledi.`)
   onayredlog.send({embeds: [embed], components: [buttons]})
     
-   db.set(`bot_${id}`, {status: 'bekliyor', userId: message.author.id})
+   db.set(`bot_${id}`, {status: 'bekliyor', userId: message.author.id, botId: id})
+//   db.set(`userbot_${message.author.id}`, {userId: message.author.id, botId: id})
    db.push(`list_${message.guild.id}`, id)
  
   }

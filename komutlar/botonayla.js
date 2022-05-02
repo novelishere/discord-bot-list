@@ -3,25 +3,22 @@ const db = require('quick.db')
 
 exports.run = async(client, message, args) => {
   
+  let id = args[0]
   let msg = message.channel
   let list = db.fetch(`list_${message.guild.id}`)
-  let liste = list.map(x => `> **${x}**`).join(`\n`)
+  let log = client.channels.cache.get(process.env.MOD_LOG)
+  let bot = db.fetch(`bot_${id}`)
   
   let perm = process.env.PERM_ROLE_ID
   if(!message.member.roles.cache.has(perm)) return msg.send(`> Üzgünüm <@${message.author.id}, **bu komut yanlız yöneticiler olarak ayarlı**`)
-  
-  const embed = new MessageEmbed()
-  .setTitle("Onaylanmayı Bekleyen Botlar...")
-  .setColor("BLUE")
-  .setDescription(`${liste}`)
-  .setFooter({text: message.author.tag, iconURL: message.author.displayAvatarURL({dynamic: true})})
-  
-  msg.send({embeds: [embed]})
+  if(!id) return msg.send(`> Üzgünüm <@${message.author.id}, **bir id belirtmen gerekiyor**`)
+  if(!bot) return msg.send(`> Böyle bir bot başvurmamış.`)
+  if(bot.status === 'onaylandı'
   
 }
 exports.conf = {
-  aliases: ['list']
+  aliases: ['onayla']
 }
 exports.help = {
-  name: 'liste'
+  name: 'botonayla'
 }
