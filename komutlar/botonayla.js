@@ -16,8 +16,8 @@ exports.run = async(client, message, args) => {
   if(bot.status === 'onaylandı') return msg.send(`> Bu bot zaten sistemimizde bulunuyor.`)
   
   
-  db.arrayDeleteVal(`list_${message.guild.id}`, id)
-  db.push(`bot_${id}`, {status: 'onaylandı'})
+  db.delete(`list_${message.guild.id}`, [id])
+  db.set(`bot_${id}`, {status: 'onaylandı'})
   
   msg.send(`> ✅ Tebrikler, botu onayladınız.`)
   log.send(`<@${bot.userId}> adlı kullanıcının botu <@${id}> onaylandı.`)
