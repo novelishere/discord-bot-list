@@ -14,6 +14,7 @@ exports.run = async(client, message, args) => {
   
   let user = db.fetch(`userbot_${message.author.id}`)
   let bot = db.fetch(`bot_${id}`)
+  let list = db.fetch(`botlist_${message.guild.id}`)
   
   if(!id) return msg.send(`> Üzgünüm <@${message.author.id}>, **botunuzun idsini belirtmeniz gerekiyor.**`)
   if(isNaN(id)) return msg.send(`> Üzgünüm <@${message.author.id}>, **belirtmiş olduğunuz id rakamlardan oluşmuyor.**`)
@@ -23,6 +24,7 @@ exports.run = async(client, message, args) => {
   if(bot.status === 'bekliyor') return msg.send(`> Üzgünüm <@${message.author.id}>,** bu bot zaten başvurmuş, lütfen onaylanmasını bekleyin.**`)
   if(bot.status === 'onaylandı') return msg.send(`> Üzgünüm <@${message.author.id}>, **bu bot zaten sistemimizde bulunuyor.**`)
   } else {
+  if(!list) db.set(`botlist_${message.guild.id}`, [])
   
   const buttons = new MessageActionRow()
   .addComponents(
@@ -51,8 +53,8 @@ exports.run = async(client, message, args) => {
   modlog.send(`<@${message.author.id}>, <@${id}> botunu sisteme ekledi.`)
   onayredlog.send({embeds: [embed], components: [buttons]})
     
-   db.set(`bot_${id}`, {status: 'bekliyor', userId: message.author.id}) 
-    
+   db.set(`bot_${id}`, {status: 'bekliyor', userId: message.author.id})
+   db.push(`botlist_${message.guild.id}`, id)
 }
 }
 exports.conf = {
