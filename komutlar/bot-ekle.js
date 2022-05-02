@@ -24,8 +24,8 @@ exports.run = async(client, message, args) => {
   if(bot.status === 'bekliyor') return msg.send(`> Üzgünüm <@${message.author.id}>,** bu bot zaten başvurmuş, lütfen onaylanmasını bekleyin.**`)
   if(bot.status === 'onaylandı') return msg.send(`> Üzgünüm <@${message.author.id}>, **bu bot zaten sistemimizde bulunuyor.**`)
   } else {
-  if(!list) return db.set(`botlist_${message.guild.id}`, [])
-  
+   
+    
   const buttons = new MessageActionRow()
   .addComponents(
     
@@ -54,7 +54,8 @@ exports.run = async(client, message, args) => {
   onayredlog.send({embeds: [embed], components: [buttons]})
     
    db.set(`bot_${id}`, {status: 'bekliyor', userId: message.author.id})
-   db.push(`botlist_${message.guild.id}`, id)
+   db.push(`botlist`, id)
+   
 }
 }
 exports.conf = {

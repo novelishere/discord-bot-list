@@ -4,8 +4,8 @@ const db = require('quick.db')
 exports.run = async(client, message, args) => {
   
   let msg = message.channel
-  let list = db.fetch(`botlist_${message.guild.id}`) || 0
-  
+  let list = db.fetch(`botlist`)
+   let liste = list.map(num => num)
   
   let perm = process.env.PERM_ROLE_ID
   if(!message.member.roles.cache.has(perm)) return msg.send(`> Üzgünüm <@${message.author.id}, **bu komut yanlız yöneticiler olarak ayarlı**`)
@@ -13,7 +13,7 @@ exports.run = async(client, message, args) => {
   const embed = new MessageEmbed()
   .setTitle("Onaylanmayı Bekleyen Botlar...")
   .setColor("BLUE")
-  .setDescription(`>> ${list}`)
+  .setDescription(`>> ${liste}`)
   
   msg.send({embeds: [embed]})
   
