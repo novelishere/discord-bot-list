@@ -5,7 +5,7 @@ exports.run = async(client, message, args) => {
   
   let msg = message.channel
   let list = db.fetch(`botlist`)
-   let liste = list.map(num => num)
+  let liste = list.map(x => `\`${x}\``).join(`\n`)
   
   let perm = process.env.PERM_ROLE_ID
   if(!message.member.roles.cache.has(perm)) return msg.send(`> Üzgünüm <@${message.author.id}, **bu komut yanlız yöneticiler olarak ayarlı**`)
