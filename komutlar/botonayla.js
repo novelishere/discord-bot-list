@@ -11,10 +11,17 @@ exports.run = async(client, message, args) => {
   
   let perm = process.env.PERM_ROLE_ID
   if(!message.member.roles.cache.has(perm)) return msg.send(`> Üzgünüm <@${message.author.id}, **bu komut yanlız yöneticiler olarak ayarlı**`)
-  if(!id) return msg.send(`> Üzgünüm <@${message.author.id}, **bir id belirtmen gerekiyor**`)
+  if(!id) return msg.send(`> Üzgünüm <@${message.author.id}>, **bir id belirtmen gerekiyor**`)
   if(!bot) return msg.send(`> Böyle bir bot başvurmamış.`)
-  if(bot.status === 'onaylandı'
+  if(bot.status === 'onaylandı') return msg.send(`> Bu bot zaten sistemimizde bulunuyor.`)
   
+  
+  db.arrayDeleteVal(`list_${message.guild.id}`, id)
+  db.push(`bot_${id}`, {status: 'onaylandı'})
+  
+  msg.send(`> ✅ Tebrikler, botu onayladınız.`)
+  log.send(`<@${bot.userId}> adlı kullanıcının botu <@${id}> onaylandı.`)
+
 }
 exports.conf = {
   aliases: ['onayla']
