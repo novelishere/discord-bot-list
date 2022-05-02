@@ -5,12 +5,7 @@ exports.run = async(client, message, args) => {
  
   let msg = message.channel
   
- if(message.channel.id !== process.env.CHANNEL) {
-   
- return  message.delete()
- return  msg.send(`Üzgünüm <@${message.author.id}>, **Bu kanal bot-ekle kanalı olarak ayarlanmamış, lütfen <#${process.env.CHANNEL}> kanalında kullanmaya çalışın.**`).then((e) => setTimeout(() => e.delete, 1000 * 5))
-   
- }
+ if(message.channel.id !== process.env.CHANNEL) return msg.send(`Üzgünüm <@${message.author.id}>, **Bu kanal bot-ekle kanalı olarak ayarlanmamış, lütfen <#${process.env.CHANNEL}> kanalında kullanmaya çalışın.**`)
   
   let id = args[0]
   
