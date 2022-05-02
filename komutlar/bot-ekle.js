@@ -1,5 +1,5 @@
 const {MessageEmbed, MessageActionRow, MessageButton, Permissions} = require('discord.js')
-const db = require('quick.db')
+const db = require('orio.db')
 
 exports.run = async(client, message, args) => {
  

@@ -1,5 +1,5 @@
 const {MessageEmbed, MessageActionRow, MessageButton, Permissions} = require('discord.js')
-const db = require('quick.db')
+const db = require('orio.db')
 
 exports.run = async(client, message, args) => {
   
@@ -16,7 +16,7 @@ exports.run = async(client, message, args) => {
   if(bot.status === 'onaylandı') return msg.send(`> Bu bot zaten sistemimizde bulunuyor.`)
   
   
-  db.delete(`list_${message.guild.id}`, [id])
+  db.unpush(`list_${message.guild.id}`, id)
   db.set(`bot_${id}`, {status: 'onaylandı'})
   
   msg.send(`> ✅ Tebrikler, botu onayladınız.`)
