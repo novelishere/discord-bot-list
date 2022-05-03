@@ -116,22 +116,36 @@ client.on('guildMemberAdd', async member => {
   
 });
 
+client.on('ready', () => {
+ 
+  if(!process.env.MOD_LOG) {
+   console.log("MOD_LOG: Ayarlı değil, lütfen .env üzerinden gerekli yerleri düzenleyin!")
+  }
+  
+  if(!process.env.ONAY_RED_LOG) {
+   console.log("ONAY_RED_LOG: Ayarlı değil, lütfen .env üzerinden gerekli yerleri düzenleyin!") 
+  }
+  
+  if(!process.env.CHANNEL) {
+    console.log("CHANNEL: Ayarlı değil, lütfen .env üzerinden gerekli yerleri düzenleyin!")
+  }
+  
+  if(!process.env.PERM_ROLE_ID) {
+    console.log("PERM_ROLE_ID: Ayarlı değil, lütfen .env üzerinden gerekli yerleri düzenleyin!")
+  }
+  
+  if(!process.env.OTO_ONAY) {
+    console.log("OTO_ONAY Ayarlı değil, lütfen .env üzerinden gerekli yerleri düzenleyin!")
+  }
+  
+  if(!process.env.BAN) {
+    console.log("BAN: Ayarlı değil, lütfen .env üzerinden gerekli yerleri düzenleyin!")
+  }
+  
+});
+
 
 client.on('ready', () => {
-
-  // Oynuyor Kısmı
-  
-      var actvs = [
-        `${prefix}yardım ${client.guilds.cache.size} sunucuyu`,
-        `${prefix}yardım ${client.users.cache.size} Kullanıcıyı`, 
-        `${prefix}yardım`
-    ];
-    
-    client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'LISTENING' });
-    setInterval(() => {
-        client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'LISTENING'});
-    }, 15000);
-    
   
       console.log ('_________________________________________');
       console.log (`Kullanıcı İsmi     : ${client.user.username}`);
