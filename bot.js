@@ -121,7 +121,7 @@ client.on('ready', () => {
   console.log(`Atlas Code & Winter Code: ${client.user.tag}, Token girişi başarılı.`)
   console.log("--------------------------------------------------------------------")
   
-  
+  client.user.setPresence({ activities: [{ name: 'Made By. Novel#3000' }], status: 'online' });
   
 });
 

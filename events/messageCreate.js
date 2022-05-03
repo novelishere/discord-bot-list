@@ -1,6 +1,7 @@
-const ayarlar = require('../ayarlar.json');
+
 let talkedRecently = new Set();
 module.exports = message => {
+  let prefix = process.env.PREFIX || '!'
   if (talkedRecently.has(message.author.id)) {
     return;
   }
@@ -10,8 +11,8 @@ module.exports = message => {
   }, 2500);
   let client = message.client;
   if (message.author.bot) return;
-  if (!message.content.startsWith(ayarlar.prefix)) return;
-  let command = message.content.split(' ')[0].slice(ayarlar.prefix.length);
+  if (!message.content.startsWith(prefix)) return;
+  let command = message.content.split(' ')[0].slice(prefix.length);
   let params = message.content.split(' ').slice(1);
   let cmd;
   if (client.commands.has(command)) {
