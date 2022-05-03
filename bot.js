@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ intents: 32767 });
 const ayarlar = require('./ayarlar.json');
 const fs = require('fs');
+const db = require('orio.db');
 const moment = require('moment');
 require('./util/eventLoader')(client);
 
@@ -73,6 +74,24 @@ client.unload = command => {
     }
   });
 };
+
+client.on('guildMemberRemove', async member => {
+  
+  let log = process.env.MOD
+  
+  let user = db.fetch(`userbot_${member.user.id}`)
+  if(!user) return;
+  let bot = db.fetch(`bot_${user.botId}`)
+  if(bot.status === 'onaylandı') {
+      
+    
+  let bott = member.guild.users.cache.get(user.botId)
+  bott.ban({reason: 'Sahibi Çıktı'})
+  
+  }
+  
+});
+
 
 client.on('ready', () => {
 
