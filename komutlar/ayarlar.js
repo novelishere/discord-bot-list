@@ -17,8 +17,15 @@ exports.run = async (client, message, args) => {
   const embed = new MessageEmbed()
   .setTitle("Ayarlar")
   .setColor("BLUE")
-  .setFooter({text: author.tag, iconURL: author.displayAvatarURL({dynamic: true})})
-  .addField("",``)
+  .setFooter({text: `${author.tag}`, iconURL: `${author.displayAvatarURL({dynamic: true})}`})
+  .addField("Mod-Log", `${log}`)
+  .addField("Onay-Red-Log", `${onayred}`)
+  .addField("Bot Ekletme Kanalı", `${kanal}`)
+  .addField("Yetkili Rol", `${rol}`)
+  .addField("Ban Sistemi", `${ban}`)
+  .addField("Otomatik Onaylama", `${otoonay}`)
+  
+  channel.send({embeds: [embed]})
   
 }
 exports.conf = {
