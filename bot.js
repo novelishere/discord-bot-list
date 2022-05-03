@@ -77,7 +77,9 @@ client.unload = command => {
 
 client.on('guildMemberRemove', async member => {
   
-  let log = process.env.MOD
+if(process.env.BAN === true) {
+  
+  let log = client.channels.cache.get(process.env.MOD_LOG)
   
   let user = db.fetch(`userbot_${member.user.id}`)
   if(!user) return;
@@ -87,7 +89,29 @@ client.on('guildMemberRemove', async member => {
     
   let bott = member.guild.users.cache.get(user.botId)
   bott.ban({reason: 'Sahibi Çıktı'})
+    
+ log.send(`<@${member.user.id} sunucudan çıktığı için <@${user.botId}> botunu banladım`)
   
+  }
+  
+  } else {
+    return;
+  }
+  
+});
+
+client.on('guildMemberAdd', async member => {
+  
+  if(process.env.OTO_ONAY === true) {
+    
+    let bot = db.fetch(`bot_${member.user.id}`)
+    if(bot) {
+      
+      db.set(`bot_`)
+      log.send(`<@${bot.userId}> adlı kullanıcının botu <@${member.user.id}> onaylandı.`)
+      
+    }
+    
   }
   
 });
