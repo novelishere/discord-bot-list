@@ -11,7 +11,9 @@ exports.run = async(client, message, args) => {
   } else {
     var durum = '❌'
   }
-  let liste = list.map(x => `> ${durum} **${x}**`).join(`\n`)
+  
+  let x = list.filter(num => db.fetch(`bot_${num}`).status === 'bekliyor');
+  let liste = x.map(a => `> **${a}**`).join('\n')
   
   let perm = process.env.PERM_ROLE_ID
   if(!message.member.roles.cache.has(perm)) return msg.send(`> Üzgünüm <@${message.author.id}, **bu komut yanlız yöneticiler olarak ayarlı**`)
