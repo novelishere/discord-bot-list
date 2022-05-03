@@ -9,7 +9,7 @@ require('./util/eventLoader')(client);
 var prefix = ayarlar.prefix;
 
 const log = message => {
-  console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
+  console.log(`[NOVEL] ${message}`);
 };
 
 client.commands = new Discord.Collection();
@@ -117,7 +117,15 @@ client.on('guildMemberAdd', async member => {
 });
 
 client.on('ready', () => {
- 
+  console.log("--------------------------------------------------------------------")
+  console.log(`Atlas Code & Winter Code: ${client.user.tag}, Token girişi başarılı.`)
+  console.log("--------------------------------------------------------------------")
+  
+  
+  
+});
+
+client.on('ready', () => {
   if(!process.env.MOD_LOG) {
    console.log("MOD_LOG: Ayarlı değil, lütfen .env üzerinden gerekli yerleri düzenleyin!")
   }
@@ -141,21 +149,8 @@ client.on('ready', () => {
   if(!process.env.BAN) {
     console.log("BAN: Ayarlı değil, lütfen .env üzerinden gerekli yerleri düzenleyin!")
   }
-  
+    console.log("--------------------------------------------------------------------")
 });
-
-
-client.on('ready', () => {
-  
-      console.log ('_________________________________________');
-      console.log (`Kullanıcı İsmi     : ${client.user.username}`);
-      console.log (`Sunucular          : ${client.guilds.cache.size}`);
-      console.log (`Kullanıcılar       : ${client.users.cache.size}`);
-      console.log (`Prefix             : ${ayarlar.prefix}`);
-      console.log (`Durum              : Bot Çevrimiçi!`);
-      console.log ('_________________________________________');
-    
-    });
 
 
 
