@@ -1,12 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: 32767 });
-const ayarlar = require('./ayarlar.json');
 const fs = require('fs');
 const db = require('orio.db');
 const moment = require('moment');
 require('./util/eventLoader')(client);
-
-var prefix = ayarlar.prefix;
 
 const log = message => {
   console.log(`[NOVEL] ${message}`);

@@ -15,6 +15,9 @@ Eğer bu hatayı alıyor iseniz .env dosyasındaki gerekli yerleri düzenlememi�
 
 • **PERM_ROLE_ID**
 
+• **ROLE_ID**
+
+
 • **OTO_ONAY**
 
 • **BAN**
@@ -29,6 +32,26 @@ Eğer bu hatayı alıyor iseniz .env dosyasındaki gerekli yerleri düzenlememi�
 • **CHANNEL** yazan yerin karşısına `<prefix>bot-ekle` komutunun kullanılacak kanal idsini yerleştirin.
 # PERM_ROLE_ID
 • **PERM_ROLE_ID** yazan yerin karşısına `<prefix>onayla`,`<prefix>liste`,`<prefix>reddet` komutlarını kullanabilecek kişilere özel bir rol oluşturun ve o rolün idsini yerleştirin.
+# ROLE_ID
+• **ROLE_ID** yazan yerin karşısına botu onaylanan kişilere verilecek rolü ayarlarsınız.
 # OTO_ONAY
 • **OTO_ONAY** yazan yerin karşısına **true** yazarsanız otomatik onaylatma sistemi açılır. Örnek;
- diyelim ki x kullanıcısını botunu ekletti
+
+
+ diyelim ki x kullanıcısını botunu ekletti ve siz onun botunu onaylamadan sunucuya eklerseniz bot otomatik olarak o botu onaylar.
+# BAN 
+• **BAN** yazan yerin karşısına **true** yazarsanız otomatik banlama sistemi açılır. Örnek;
+
+
+diyelim ki y kullanıcısı botunu ekletti ve onaylandı eğer daha sonra sunucudan çıkar ise onaylanan bot sunucudan banlanır.
+
+### ÖNEMLİ ⚠️
+• Eğer botun prefixini ayarlamaz iseniz otomatik olarak prefix '!' olarak değiştirilecek.
+
+### DESTEK
+
+[Atlas Code](https://discord.gg/botlist)
+
+[Winter Code,]()
+
+[]()

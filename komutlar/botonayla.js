@@ -15,9 +15,11 @@ exports.run = async(client, message, args) => {
   if(!bot) return msg.send(`> Böyle bir bot başvurmamış.`)
   if(bot.status === 'onaylandı') return msg.send(`> Bu bot zaten sistemimizde bulunuyor.`)
   
+  let member = client.guild.members.cache.get(bot.userId)
   
   db.unpush(`list_${message.guild.id}`, [id])
   db.set(`bot_${id}`, {status: 'onaylandı'})
+  member.roles.add(process.env.ROLE_ID)
   
   msg.send(`> ✅ Tebrikler, botu onayladınız.`)
   log.send(`<@${bot.userId}> adlı kullanıcının botu <@${id}> onaylandı.`)
