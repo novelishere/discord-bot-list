@@ -26,7 +26,7 @@ exports.run = async(client, message, args) => {
   } else {
    
   if(!list) {
-    db.set(`list_${message.guild.id}`, ["🆔"])
+    db.set(`list_${message.guild.id}`, [""])
   } else {
     
   const buttons = new MessageActionRow()

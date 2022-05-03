@@ -6,8 +6,12 @@ exports.run = async(client, message, args) => {
   let msg = message.channel
   let list = db.fetch(`list_${message.guild.id}`)
   let bot = db.fetch(`bot_${list}`)
-  
-  let liste = list.map(x => `${durum} **${x}**`).join(`\n`)
+  if(bot) {
+    var durum = '✅'
+  } else {
+    var durum = '❌'
+  }
+  let liste = list.map(x => `> ${durum} **${x}**`).join(`\n`)
   
   let perm = process.env.PERM_ROLE_ID
   if(!message.member.roles.cache.has(perm)) return msg.send(`> Üzgünüm <@${message.author.id}, **bu komut yanlız yöneticiler olarak ayarlı**`)
