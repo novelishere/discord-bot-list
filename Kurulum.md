@@ -46,12 +46,12 @@ Eğer bu hatayı alıyor iseniz .env dosyasındaki gerekli yerleri düzenlememi�
 diyelim ki y kullanıcısı botunu ekletti ve onaylandı eğer daha sonra sunucudan çıkar ise onaylanan bot sunucudan banlanır.
 
 ### ÖNEMLİ ⚠️
-• Eğer botun prefixini ayarlamaz iseniz otomatik olarak prefix '!' olarak değiştirilecek.
+• Eğer botun prefixini ayarlamaz iseniz otomatik olarak prefix **!** olarak değiştirilecek.
 
 ### DESTEK
 
 [Atlas Code](https://discord.gg/botlist)
 
-[Winter Code,]()
+[Winter Code](https://discord.gg/G7pmBjdK5N)
 
-[]()
+['Novel#3000](https://discord.com/users/917437900298285097)
